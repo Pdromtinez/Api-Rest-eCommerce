@@ -27,7 +27,7 @@ app.use('/SoldItems', SoldItemsrouter)
 
 try{
 	await db.authenticate()
-		console.log('conected to database')
+		console.log('conected to database2')
 	}catch(error){
 		console.log(`error:' ${error}`)
 	}
