@@ -1,8 +1,11 @@
 import { Sequelize } from 'sequelize';
 
+dotenv.config()
 
-const db = new Sequelize('eCommerce_Shoes', 'root', "" , {
-  host: 'localhost',
+const { DB_NAME, DB_USER, DB_PASSWORD, DB_HOST} = process.env
+
+const db = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
+  host: DB_HOST,
   dialect: 'mysql'
 });
 
