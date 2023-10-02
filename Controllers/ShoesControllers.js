@@ -49,7 +49,7 @@ export const GetAllShoes = async (req, res) => {
             await ShoesModel.create(req.body)
             res.json({message: "The Shoe has been created successfully!"})
         }catch(error){
-            res.status(500).json({message: error.message})
+            res.status(500).json({message: "Field 'title' doesn't have a default value"})
         }
     }
 
@@ -57,7 +57,7 @@ export const GetAllShoes = async (req, res) => {
         try{
             await ShoesModel.update(req.body,{where: { id : req.params.id}})
 
-            res.json({message: "The book has been updated successfully!"})
+            res.json({message: "The Shoe has been updated successfully!"})
         }catch(error){
             res.status(500).json({message: error.message})
         }
@@ -66,7 +66,7 @@ export const GetAllShoes = async (req, res) => {
     export const DeleteShoes = async (req, res) => {
         try{
             let ShoesDeleted
-            if (re.params.id){
+            if (req.params.id){
             ShoesDeleted = await ShoesModel.destroy({where: { id : req.params.id}})
             res.json({message: "The Shoe has been deleted successfully!"})
                 if (!ShoesDeleted){
@@ -76,6 +76,6 @@ export const GetAllShoes = async (req, res) => {
             res.status(201).json({message:"no se ha encontrado el zapato"})
         }
         }catch(error){
-            res.status(500).json({message: "Field 'title' doesn't have a default value"})
+            res.status(201).json({message:"no se ha encontrado el zapato"})
         }
     }

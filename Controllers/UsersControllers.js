@@ -46,7 +46,7 @@ export const GetAllUsers = async (req, res) => {
     export const DeleteUsers = async (req, res) => {
         try{
             let UsersDeleted
-            if (re.params.id){
+            if (req.params.id){
             UsersDeleted = await UsersModel.destroy({where: { id : req.params.id}})
             res.json({message: "The User has been deleted successfully!"})
                 if (!UsersDeleted){

@@ -24,11 +24,14 @@ describe('POST /Shoes',() =>{
         const newShoe = {
             productName: "test",
             productDescription: "test",
+            brand_id: 2,
             status: "test",
+            category_id: 2
         }
 
         const wrongShoe = {
-            wrong_field:'test'
+            wrong_field:'test',
+            category_id: 2,
         }
 
         test('should return a response with status 200 and type json', async () =>{
@@ -39,7 +42,7 @@ describe('POST /Shoes',() =>{
 
         test('should return a message book created successfully', async () =>{
             const response = await request(app).post('/Shoes').send(newShoe)
-            expect(response.body.message).toContain("The book has been created successfully!")
+            expect(response.body.message).toContain("The Shoe has been created successfully!")
         })
 
         test('should return a message insertion error If post wrong book ', async () =>{
@@ -54,9 +57,11 @@ describe('POST /Shoes',() =>{
         let createdBook = {};
         beforeEach(async () => {
             createdBook = await ShoesModel.create({ 
-                title: "test",
-                author: "test",
-                book_description: "test",
+                productName: "test",
+                productDescription: "test",
+                brand_id: 2,
+                status: "test",
+                category_id: 2
             });
         });
 
@@ -67,7 +72,7 @@ describe('POST /Shoes',() =>{
         test('should return a response with status 200 and update successfully', async () => {
             const response = await request(app).put(`/Shoes/${createdBook.id}`).send({title: "update test"});
             expect(response.status).toBe(200);
-            expect(response.body.message).toContain("The book has been updated successfully!")
+            expect(response.body.message).toContain("The Shoe has been updated successfully!")
         })
     })
 
@@ -75,16 +80,18 @@ describe('POST /Shoes',() =>{
         let createdShoe = {};
         beforeEach(async () => {
             createdShoe = await ShoesModel.create({ 
-                title: "test",
-                author: "test",
-                book_description: "test",
+                productName: "test",
+                productDescription: "test",
+                brand_id: 2,
+                status: "test",
+                category_id: 2
             });
         });
 
-        test('should return a response with status 200 and update successfully', async () => {
+        test('should return a response with status 200 and delete successfully', async () => {
             const response = await request(app).delete(`/Shoes/${createdShoe.id}`).send();
             expect(response.status).toBe(200);
-            expect(response.body.message).toContain("The book has been deleted successfully!")
+            expect(response.body.message).toContain("The Shoe has been deleted successfully!")
         })
     })
 

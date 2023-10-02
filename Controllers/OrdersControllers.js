@@ -51,7 +51,7 @@ export const UpdateOrders = async (req, res) => {
 export const DeleteOrders = async (req, res) => {
     try{
         let OrdersDeleted
-        if (re.params.id){
+        if (req.params.id){
         OrdersDeleted = await OrdersModel.destroy({where: { id : req.params.id}})
         res.json({message: "The Orders has been deleted successfully!"})
             if (!OrdersDeleted){
