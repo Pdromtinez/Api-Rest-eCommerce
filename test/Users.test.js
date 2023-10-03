@@ -26,7 +26,6 @@ describe('POST /Users',() =>{
             role: "test"
         }
 
-    
 
         test('should return a response with status 200 and type json', async () =>{
             const response = await request(app).post('/Users').send(newUser)

@@ -67,7 +67,7 @@ export const DeleteBrand = async (req, res) => {
         res.status(201).json({message:"404 Brand not found"})
     }
     }catch(error){
-        res.status(500).json({message: "Field 'title' doesn't have a default value"})
+        res.status(500).json({message: "The Operation has failed fantastically"})
     }
 }
 

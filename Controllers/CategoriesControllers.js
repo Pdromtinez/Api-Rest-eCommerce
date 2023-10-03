@@ -51,7 +51,7 @@ export const GetAllCategories = async (req, res) => {
                 res.status(201).json({message:"no se ha encontrado el usuario"})
             }
         }catch(error){
-            res.status(500).json({message: "Field 'title' doesn't have a default value"})
+            res.status(500).json({message: "The Operation has failed fantastically"})
         }
     }
 

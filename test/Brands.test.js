@@ -25,13 +25,14 @@ describe('POST /Brand',() =>{
             name: "test"
         }
 
+
         test('should return a response with status 200 and type json', async () =>{
             const response = await request(app).post('/Brand').send(newBrand)
             expect(response.status).toBe(200)
             expect(response.headers['content-type']).toContain('json')
         });
 
-        test('should return a message book created successfully', async () =>{
+        test('should return a message Brand created successfully', async () =>{
             const response = await request(app).post('/Brand').send(newBrand)
             expect(response.body.message).toContain("The Brand has been created successfully!")
         })
@@ -40,19 +41,19 @@ describe('POST /Brand',() =>{
     })
 
     describe('PUT /Brand', () =>{
-        let createdBook = {};
+        let createdBrand = {};
         beforeEach(async () => {
-            createdBook = await BrandModel.create({ 
+            createdBrand = await BrandModel.create({ 
                 name:"test"
             });
         });
 
         afterAll(async() =>{
-            await BrandModel.destroy({where:{ id: createdBook.id}})
+            await BrandModel.destroy({where:{ id: createdBrand.id}})
         })
 
         test('should return a response with status 200 and update successfully', async () => {
-            const response = await request(app).put(`/Brand/${createdBook.id}`).send({title: "update test"});
+            const response = await request(app).put(`/Brand/${createdBrand.id}`).send({ name: "update test"});
             expect(response.status).toBe(200);
             expect(response.body.message).toContain("The Brand has been updated successfully!")
         })

@@ -43,6 +43,6 @@ export const DeleteSoldItems = async (req, res) => {
         res.status(201).json({message:"404 SoldItems not found"})
     }
     }catch(error){
-        res.status(500).json({message: "Field 'title' doesn't have a default value"})
+        res.status(500).json({message:"404 SoldItems not found"})
     }
 }

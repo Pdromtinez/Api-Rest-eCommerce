@@ -40,23 +40,23 @@ describe('POST /Shoes',() =>{
             expect(response.headers['content-type']).toContain('json')
         });
 
-        test('should return a message book created successfully', async () =>{
+        test('should return a message Shoe created successfully', async () =>{
             const response = await request(app).post('/Shoes').send(newShoe)
             expect(response.body.message).toContain("The Shoe has been created successfully!")
         })
 
-        test('should return a message insertion error If post wrong book ', async () =>{
+        test('should return a message insertion error If post wrong Shoe ', async () =>{
             const response = await request(app).post('/Shoes').send(wrongShoe)
             expect(response.status).toBe(500);
-            expect(response.body.message).toContain("Field 'title' doesn't have a default value")
+            expect(response.body.message).toContain("The Operation has failed fantastically")
         }) 
 
     })
 
     describe('PUT /Shoes', () =>{
-        let createdBook = {};
+        let createdShoe = {};
         beforeEach(async () => {
-            createdBook = await ShoesModel.create({ 
+            createdShoe = await ShoesModel.create({ 
                 productName: "test",
                 productDescription: "test",
                 brand_id: 2,
@@ -66,11 +66,11 @@ describe('POST /Shoes',() =>{
         });
 
         afterAll(async() =>{
-            await ShoesModel.destroy({where:{ id: createdBook.id}})
+            await ShoesModel.destroy({where:{ id: createdShoe.id}})
         })
 
         test('should return a response with status 200 and update successfully', async () => {
-            const response = await request(app).put(`/Shoes/${createdBook.id}`).send({title: "update test"});
+            const response = await request(app).put(`/Shoes/${createdShoe.id}`).send({title: "update test"});
             expect(response.status).toBe(200);
             expect(response.body.message).toContain("The Shoe has been updated successfully!")
         })
