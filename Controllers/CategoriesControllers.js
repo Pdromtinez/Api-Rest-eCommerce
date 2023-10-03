@@ -1,5 +1,5 @@
 import CategoriesModel from "../models/Categories.js";
-
+import ShoesModel from "../models/Shoes.js";
 export const GetAllCategories = async (req, res) => {
     try {
         let category;
@@ -54,3 +54,17 @@ export const GetAllCategories = async (req, res) => {
             res.status(500).json({message: "Field 'title' doesn't have a default value"})
         }
     }
+
+    export const GetCategoriesProducts = async (req, res) => {
+
+        const {id} = req.params
+        try {
+            const Shoes = await ShoesModel.findAll({
+              where: { category_id: id },
+            });
+            res.json(Shoes);
+          } catch (e) {
+            return res.status(500).json({ message: e.message });
+          }
+    }
+    

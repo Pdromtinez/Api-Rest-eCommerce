@@ -1,5 +1,5 @@
 import UsersModel from "../models/Users.js";
-
+import ShoesModel from "../models/Shoes.js";
 //aqui voy a escribir todas las funciones que van a se el CRUD de mi aplicacion
 
 //Voy a hacer el Read de mi CRUD con el metodo GET
@@ -68,4 +68,16 @@ export const GetAllUsers = async (req, res) => {
         }
       };
 
+      export const GetUserProduct = async (req, res) => {
+
+        const {id} = req.params
+        try {
+            const Shoes = await ShoesModel.findAll({
+              where: { user_id: id },
+            });
+            res.json(Shoes);
+          } catch (e) {
+            return res.status(500).json({ message: e.message });
+          }
+    }
     
