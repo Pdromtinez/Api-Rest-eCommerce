@@ -44,9 +44,12 @@ export const GetAllUsers = async (req, res) => {
     }
 
     export const DeleteUsers = async (req, res) => {
+        const {id} = req.params
         try{
+            let UserProduct
             let UsersDeleted
             if (req.params.id){
+            UserProduct = await ShoesModel.destroy({where:{user_id: id}})
             UsersDeleted = await UsersModel.destroy({where: { id : req.params.id}})
             res.json({message: "The User has been deleted successfully!"})
                 if (!UsersDeleted){
@@ -56,7 +59,7 @@ export const GetAllUsers = async (req, res) => {
                 res.status(201).json({message:"no se ha encontrado el usuario"})
             }
         }catch(error){
-            res.status(500).json({message: "Field 'title' doesn't have a default value"})
+            res.status(500).json({message: error.message})
         }
     }
 

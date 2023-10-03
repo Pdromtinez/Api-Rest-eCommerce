@@ -23,10 +23,12 @@ describe('POST /Shoes',() =>{
 
         const newShoe = {
             productName: "test",
-            productDescription: "test",
-            brand_id: 2,
-            status: "test",
-            category_id: 2
+                productDescription: "test",
+                brand_id: 2,
+                category_id: 2,
+                user_id: 1,
+                Stock: 200,
+                status: "test"
         }
 
         const wrongShoe = {
@@ -60,8 +62,10 @@ describe('POST /Shoes',() =>{
                 productName: "test",
                 productDescription: "test",
                 brand_id: 2,
-                status: "test",
-                category_id: 2
+                category_id: 2,
+                user_id: 1,
+                Stock: 200,
+                status: "test"
             });
         });
 
@@ -83,8 +87,10 @@ describe('POST /Shoes',() =>{
                 productName: "test",
                 productDescription: "test",
                 brand_id: 2,
-                status: "test",
-                category_id: 2
+                category_id: 2,
+                user_id: 1,
+                Stock: 200,
+                status: "test"
             });
         });
 

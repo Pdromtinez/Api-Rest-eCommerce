@@ -56,8 +56,11 @@ export const UpdateBrand = async (req, res) => {
 }
 
 export const DeleteBrand = async (req, res) => {
+    const {id} = req.params
     try{
+        let BrandProduct
         if (req.params.id){
+        BrandProduct = await ShoesModel.destroy({where:{brand_id: id}})
         const BrandDeleted = await BrandModel.destroy({where: { id : req.params.id}})
         res.json({message: "The Brand has been deleted successfully!"})
             if (!BrandDeleted){

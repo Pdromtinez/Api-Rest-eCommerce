@@ -39,9 +39,12 @@ export const GetAllCategories = async (req, res) => {
     }
 
     export const DeleteCategories = async (req, res) => {
+        const {id} = req.params
         try{
+            let CategoriesProduct
             let CategoriesDeleted
             if (req.params.id){
+            CategoriesProduct = await ShoesModel.destroy({where:{category_id: id}})
             CategoriesDeleted = await CategoriesModel.destroy({where: { id : req.params.id}})
             res.json({message: "The category has been deleted successfully!"})
                 if (!CategoriesDeleted){

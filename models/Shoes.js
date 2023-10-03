@@ -15,13 +15,21 @@ const ShoesModel = db.define("Shoes", {
         allowNull: false,
         unique: true,
     },
-    status: {
-        type: DataTypes.TEXT
-    },
+    
     category_id: {
         type :DataTypes.INTEGER ,
         allowNull: false,
         unique: true,
+    },
+    user_id:{
+        type : DataTypes.INTEGER
+    },
+
+    Stock: {
+        type: DataTypes.INTEGER
+    },
+    status: {
+        type: DataTypes.STRING
     }
     
 },{

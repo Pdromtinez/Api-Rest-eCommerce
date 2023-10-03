@@ -1,5 +1,6 @@
 import db from "../Controllers/database/database.js";
 import { DataTypes } from "sequelize";
+
 const UsersModel = db.define("users", {
     username: {
         type: DataTypes.STRING
@@ -10,4 +11,7 @@ const UsersModel = db.define("users", {
 },{
     timestamps: false
 });
+
+
+
 export default UsersModel
