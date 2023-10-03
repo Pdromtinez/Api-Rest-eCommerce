@@ -25,9 +25,6 @@ describe('POST /Category',() =>{
             categoryName: "test"
         }
 
-        const wrongCategory = {
-            wrong_field:'test'
-        }
 
         test('should return a response with status 200 and type json', async () =>{
             const response = await request(app).post('/Category').send(newCategory)
@@ -66,9 +63,7 @@ describe('POST /Category',() =>{
         let createdCategory = {};
         beforeEach(async () => {
             createdCategory = await CategoriesModel.create({ 
-                title: "test",
-                author: "test",
-                category_description: "test",
+                categoryName: "test"
             });
         });
 

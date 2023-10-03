@@ -25,10 +25,6 @@ describe('POST /Brand',() =>{
             name: "test"
         }
 
-        const wrongBrand = {
-            wrong_field:'test'
-        }
-
         test('should return a response with status 200 and type json', async () =>{
             const response = await request(app).post('/Brand').send(newBrand)
             expect(response.status).toBe(200)
