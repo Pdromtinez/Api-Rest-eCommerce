@@ -21,24 +21,21 @@ describe("Test de CRUD Users",() =>{
 
 describe('POST /Users',() =>{ 
 
-        const newShoe = {
-            productName: "test",
-            productDescription: "test",
-            status: "test",
+        const newUser = {
+            username: "test",
+            role: "test"
         }
 
-        const wrongShoe = {
-            wrong_field:'test'
-        }
+    
 
         test('should return a response with status 200 and type json', async () =>{
-            const response = await request(app).post('/Users').send(newShoe)
+            const response = await request(app).post('/Users').send(newUser)
             expect(response.status).toBe(200)
             expect(response.headers['content-type']).toContain('json')
         });
 
-        test('should return a message book created successfully', async () =>{
-            const response = await request(app).post('/Users').send(newShoe)
+        test('should return a message User created successfully', async () =>{
+            const response = await request(app).post('/Users').send(newUser)
             expect(response.body.message).toContain("The User has been created successfully!")
         })
 
@@ -46,38 +43,36 @@ describe('POST /Users',() =>{
     })
 
     describe('PUT /Users', () =>{
-        let createdBook = {};
+        let createdUser = {};
         beforeEach(async () => {
-            createdBook = await UsersModel.create({ 
-                title: "test",
-                author: "test",
-                book_description: "test",
+            createdUser = await UsersModel.create({ 
+                username: "test",
+                role: "test"
             });
         });
 
         afterAll(async() =>{
-            await UsersModel.destroy({where:{ id: createdBook.id}})
+            await UsersModel.destroy({where:{ id: createdUser.id}})
         })
 
         test('should return a response with status 200 and update successfully', async () => {
-            const response = await request(app).put(`/Users/${createdBook.id}`).send({title: "update test"});
+            const response = await request(app).put(`/Users/${createdUser.id}`).send({title: "update test"});
             expect(response.status).toBe(200);
             expect(response.body.message).toContain("The User has been updated successfully!")
         })
     })
 
     describe('DELETE /Users', () =>{
-        let createdShoe = {};
+        let createdUser = {};
         beforeEach(async () => {
-            createdShoe = await UsersModel.create({ 
-                title: "test",
-                author: "test",
-                book_description: "test",
+            createdUser = await UsersModel.create({ 
+                username: "test",
+                role: "test"
             });
         });
 
         test('should return a response with status 200 and update successfully', async () => {
-            const response = await request(app).delete(`/Users/${createdShoe.id}`).send();
+            const response = await request(app).delete(`/Users/${createdUser.id}`).send();
             expect(response.status).toBe(200);
             expect(response.body.message).toContain("The User has been deleted successfully!")
         })
