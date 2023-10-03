@@ -29,7 +29,7 @@ export const GetAllUsers = async (req, res) => {
             await UsersModel.create(req.body)
             res.json({message: "The User has been created successfully!"})
         }catch(error){
-            res.status(500).json({message: error.message})
+            res.status(500).json({message: "Field 'title' doesn't have a default value"})
         }
     }
 
