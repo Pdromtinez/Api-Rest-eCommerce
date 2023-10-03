@@ -1,6 +1,9 @@
 ## Title and description
 This is the backend of an e-commerce.
 
+## Databse Diagram
+   (https://dbdiagram.io/d/DB-eCommerce-Api-651164bcffbf5169f06fb58f)
+
 ## Deployment
 
 To deploy this project install:
